@@ -48,26 +48,20 @@ class FactorsTestCase(APITestCase):
     def test_list_lesson(self):
         """Вывод всех уроков тест"""
         response = self.client.get("/factors/")
-        data = {
-            "count": 1,
-            "next": None,
-            "previous": None,
-            "results": [
-                {
-                    "id": 10,
-                    "plases": "Пляж",
-                    "time": "00:00:00",
-                    "action": "Пресс",
-                    "associated_habit": "Тренировка рук",
-                    "frequency": 1,
-                    "reward": None,
-                    "execution_time": "00:01:00",
-                    "published": True,
-                    "owner": 1,
-                    "sign_pleasant_habit": 1
-                }
-            ],
-        }
+        data = {'count': 1,
+                'next': None,
+                'previous': None,
+                'results': [{'action': 'Пресс',
+                             'associated_habit': 'Тренировка рук',
+                             'execution_time': '00:01:00',
+                             'frequency': 1,
+                             'id': 10,
+                             'owner': 1,
+                             'plases': 'Пляж',
+                             'published': True,
+                             'reward': None,
+                             'sign_pleasant_habit': 1,
+                             'time': '00:00:00'}]}
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.json(), data)
@@ -82,13 +76,12 @@ class FactorsTestCase(APITestCase):
         """Тест обновления урока"""
         data = {
             "plases": "Пляж",
+            "action": "Пресс",
             "time": "00:00",
-            "action": "Прогулка",
             "sign_pleasant_habit": 1,
             "associated_habit": "Тренировка рук",
             "execution_time": "00:02:00",
-            "owner": 1,
-            "frequency": 3
+            "owner": 1
         }
 
         response = self.client.put("/factors/update/10/", data=data)
