@@ -26,12 +26,11 @@ class FactorsCreateAPIView(generics.CreateAPIView):
         return Response({'message': 'Регистрация пользователя успешна'}, status=status.HTTP_200_OK)
 
 
-
 class FactorsListAPIView(generics.ListAPIView):
     """Factors List"""
     serializer_class = FactorsSerializer
     queryset = Factors.objects.all()
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]   # AllowAny # IsAuthenticated
     pagination_class = FactorsPaginator
 
     def get_queryset(self):
@@ -49,14 +48,14 @@ class FactorsRetrieveAPIView(generics.RetrieveAPIView):
     """Factors Retrive"""
     serializer_class = FactorsSerializer
     queryset = Factors.objects.all()
-    permission_classes = [AllowAny]
+    permission_classes = [AllowAny]  # AllowAny # IsAuthenticated
 
 
 class FactorsUpdateAPIView(generics.UpdateAPIView):
     """Factors Updaate"""
     serializer_class = FactorsSerializer
     queryset = Factors.objects.all()
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]   # AllowAny # IsAuthenticated
 
     def get_queryset(self):
         return Factors.objects.filter(owner=self.request.user)
@@ -72,7 +71,7 @@ class FactorsUpdateAPIView(generics.UpdateAPIView):
 class FactorsDestroyAPIView(generics.DestroyAPIView):
     """Factors Delete"""
     queryset = Factors.objects.all()
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]
 
     def get_queryset(self):
         return Factors.objects.filter(owner=self.request.user)

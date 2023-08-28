@@ -1,5 +1,5 @@
 from rest_framework import generics, status
-from rest_framework.permissions import IsAuthenticated, IsAdminUser
+from rest_framework.permissions import IsAuthenticated, IsAdminUser, AllowAny
 from rest_framework.response import Response
 
 from main.users.models import User
@@ -25,7 +25,7 @@ class UserListAPIView(generics.ListAPIView):
 
     serializer_class = UserSerializer
     queryset = User.objects.all()
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]   # AllowAny # IsAuthenticated
 
 
 class UserRetrieveAPIView(generics.RetrieveAPIView):
@@ -33,7 +33,7 @@ class UserRetrieveAPIView(generics.RetrieveAPIView):
 
     serializer_class = UserSerializer
     queryset = User.objects.all()
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]   # AllowAny # IsAuthenticated
 
 
 class UserUpdateAPIView(generics.UpdateAPIView):
@@ -41,11 +41,12 @@ class UserUpdateAPIView(generics.UpdateAPIView):
 
     serializer_class = UserSerializer
     queryset = User.objects.all()
-    permission_classes = [IsOwner, IsAdminUser]
+    permission_classes = [IsOwner, IsAdminUser]   # AllowAny # IsAuthenticated
 
 
 class UserDestroyAPIView(generics.DestroyAPIView):
     """Контроллер для удаления пользователя"""
 
     queryset = User.objects.all()
-    permission_classes = [IsOwner, IsAdminUser]
+    permission_classes = [IsOwner, IsAdminUser]   # AllowAny # IsAuthenticated
+
