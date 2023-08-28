@@ -12,9 +12,9 @@ from main.factors.serializers import FactorsCreateSerializer, FactorsSerializer
 class FactorsCreateAPIView(generics.CreateAPIView):
     """Factors Create"""
     serializer_class = FactorsCreateSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]  # AllowAny # IsAuthenticated
 
-    def perform_create(self, serializer):  # сохранения нового владельца при создании нового урока
+    def perform_create(self, serializer):  # сохранения нового владельца
         new_foctors = serializer.save()
         new_foctors.owner = self.request.user  # owner - владелец  (нужно добавить в models)
         new_foctors.save()
