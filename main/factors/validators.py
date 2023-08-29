@@ -8,6 +8,7 @@ def validate_related_habit_and_reward(value):
         raise ValidationError(
             'Нельзя выбрать связанную привычку и указать вознаграждение одновременно.')
 
+
 def validate_execution_time(execution_time):
     """Валидатор Время выполнения не может быть больше 120 секунд."""
     max_execution_time = timedelta(seconds=120)
@@ -19,6 +20,7 @@ def validate_execution_time(execution_time):
 
     if execution_time_timedelta > max_execution_time:
         raise ValidationError("Время выполнения не может быть больше 120 секунд.")
+
 
 def validate_related_habit(value):
     """Валидатор - В связанные привычки могут попадать только привычки с признаком приятной привычки"""
@@ -37,6 +39,3 @@ def validate_periodicity(frequency):
     min_periodicity_days = 7
     if frequency > min_periodicity_days:
         raise ValidationError('Привычку нельзя выполнять реже, чем 1 раз в 7 дней.')
-
-
-

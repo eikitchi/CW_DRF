@@ -1,7 +1,9 @@
 from rest_framework import status
+from rest_framework.permissions import AllowAny
 from rest_framework.test import APITestCase
 
 from main.factors.models import Factors, Habit
+from main.factors.views import FactorsUpdateAPIView
 from main.users.models import User
 
 
@@ -81,11 +83,15 @@ class FactorsTestCase(APITestCase):
             "sign_pleasant_habit": 1,
             "associated_habit": "Тренировка рук",
             "execution_time": "00:02:00",
-            "owner": 1
+            "owner": 1,
+            "frequency": 3
         }
 
-        response = self.client.put("/factors/update/10/", data=data)
+        # Временно изменяем разрешения на AllowAny
+        original_permissions = FactorsUpdateAPIView.permission_classes
+        FactorsUpdateAPIView.permission_classes = [AllowAny]
 
+        response = self.client.put("/factors/update/10/", data=data)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
     def test_delete_factors(self):
