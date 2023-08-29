@@ -1,10 +1,7 @@
 from rest_framework import status
-from rest_framework.permissions import AllowAny
 from rest_framework.test import APITestCase
 
-
 from main.users.models import User
-# from main.users.views import UserDestroyAPIView, UserUpdateAPIView
 
 
 class UserTestCase(APITestCase):

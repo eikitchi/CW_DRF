@@ -22,4 +22,3 @@ class Habitdmin(admin.ModelAdmin):
                    "is_pleasant")
     search_fields = ("sign_pleasant_habit",
                      "is_pleasant")
-

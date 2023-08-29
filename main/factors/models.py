@@ -2,8 +2,13 @@ from django.conf import settings
 from django.db import models
 from django.utils import timezone
 
-from main.factors.validators import validate_related_habit_and_reward, validate_execution_time, validate_related_habit, \
-    validate_good_habit, validate_periodicity
+from main.factors.validators import (
+    validate_related_habit_and_reward,
+    validate_execution_time,
+    validate_related_habit,
+    validate_good_habit,
+    validate_periodicity
+)
 from main.users.models import User
 
 NULLABLE = {"blank": True, "null": True}

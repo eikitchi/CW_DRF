@@ -2,8 +2,13 @@ from django.urls import path
 from rest_framework.routers import DefaultRouter
 
 from main.factors.apps import FactorsConfig
-from main.factors.views import FactorsDestroyAPIView, FactorsUpdateAPIView, FactorsRetrieveAPIView, FactorsListAPIView, \
+from main.factors.views import (
+    FactorsDestroyAPIView,
+    FactorsUpdateAPIView,
+    FactorsRetrieveAPIView,
+    FactorsListAPIView,
     FactorsCreateAPIView
+)
 
 app_name = FactorsConfig.name
 

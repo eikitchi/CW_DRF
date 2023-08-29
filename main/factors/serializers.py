@@ -17,4 +17,3 @@ class FactorsCreateSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         factors_item = Factors.objects.create(**validated_data)
         return factors_item
-

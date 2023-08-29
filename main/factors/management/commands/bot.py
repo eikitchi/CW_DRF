@@ -1,10 +1,6 @@
 import os
 
-import requests
-import json
 import telebot
-
-from main.factors.serializers import FactorsCreateSerializer
 
 bot = telebot.TeleBot(os.getenv("TELEGRAM_BOT_TOKEN"), parse_mode=None)
 
@@ -21,7 +17,6 @@ def send_welcome(message):
                           f"1 - Создать привычку\n"
                           f"2 - Редактировать привычку\n"
                           f"3 - удалить привычку\n")
-
 
 
 @bot.message_handler(commands=['stop'])

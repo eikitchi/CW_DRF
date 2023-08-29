@@ -2,7 +2,7 @@ import json
 from datetime import timedelta
 
 from django.utils.datetime_safe import datetime
-from django_celery_beat.models import PeriodicTask, IntervalSchedule
+from django_celery_beat.models import IntervalSchedule, PeriodicTask
 
 
 def set_schedule(*args, **kwargs):

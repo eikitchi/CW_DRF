@@ -160,7 +160,7 @@ if CACHE_ENABLED:
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTH_USER_MODEL = "users.User"
+
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
@@ -170,12 +170,13 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticated',
     ]
 }
-
+# параметр CORS  для указания разрешенных источников
 CORS_ALLOWED_ORIGINS = [
     "https://read-only.example.com",
     "https://read-and-write.example.com",
 ]
-
+# позволяет определить список доверенных доменов, из которых
+# разрешено отправлять запросы без проверки CSRF-токена
 CSRF_TRUSTED_ORIGINS = [
     "https://read-and-write.example.com",
 ]
@@ -184,15 +185,6 @@ SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(days=1),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
 }
-# параметр CORS  для указания разрешенных источников
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:8000",
-]
-# позволяет определить список доверенных доменов, из которых
-# разрешено отправлять запросы без проверки CSRF-токена
-CSRF_TRUSTED_ORIGINS = [
-    "http://localhost:8000",
-]
 
 # URL-адрес брокера сообщений
 CELERY_BROKER_URL = "redis://localhost:6379"  # Например, Redis, который по умолчанию работает на порту 6379

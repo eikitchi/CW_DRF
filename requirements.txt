@@ -53,3 +53,4 @@ django-celery-beat
 flake8
 flake8-isort
 flake8-html
+autoflake
