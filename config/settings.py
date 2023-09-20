@@ -90,10 +90,12 @@ load_dotenv()
 
 DATABASES = {
     'default': {
-        "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": os.getenv("DATABASE_NAME"),  # Название БД
-        "USER": os.getenv("DATABASE_USER"),  # Пользователь для подключения
-        "PASSWORD": os.getenv("DATABASE_PASSWORD"),  # Пароль для этого пользователя
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': "factors",
+        "USER": "postgres",
+        "PASSWORD": "1012",
+        "HOST": "127.0.0.1",
+        'PORT': 5432
     }
 }
 
